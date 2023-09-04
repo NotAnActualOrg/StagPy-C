@@ -28,6 +28,8 @@ FIELD: Mapping[str, Varf] = MappingProxyType(
         "v1": Varf("x Velocity", "m/s"),
         "v2": Varf("y Velocity", "m/s"),
         "v3": Varf("z Velocity", "m/s"),
+        'p_d': Varf('Dynamic Pressure', 'Pa'),        # AG
+        'p_s': Varf('Static Pressure', 'Pa'),     # AG
         "p": Varf("Pressure", "Pa"),
         "eta": Varf("Viscosity", "Pa.s"),
         "rho": Varf("Density", "kg/m3"),
@@ -52,6 +54,8 @@ FIELD: Mapping[str, Varf] = MappingProxyType(
         "rs2": Varf("y Momentum residue", "1"),
         "rs3": Varf("z Momentum residue", "1"),
         "rsc": Varf("Continuity residue", "1"),
+        'bs': Varf('Basalt fraction', '1'),       #AG
+        'hz': Varf('Harzburgite fraction', '1'),  #AG
         "prim": Varf("Primordial layer", "1"),
         "meltfrac": Varf("Melt fraction", "1"),
         "meltcompo": Varf("Melt composition", "1"),
@@ -63,6 +67,7 @@ FIELD: Mapping[str, Varf] = MappingProxyType(
         "fFeO": Varf("fFeO", "1"),
         "fXO": Varf("fXO", "1"),
         "fFeR": Varf("fFeR", "1"),
+
     }
 )
 
@@ -111,6 +116,7 @@ FIELD_FILES_H5: Mapping[str, List[str]] = MappingProxyType(
         # the dynamic pressure might be written in this file instead.  It will be
         # used as fallback by _step._Fields._get_raw_data.
         "Pressure": ["p"],
+        'Static Pressure': ['p_s'],      # AG
         "Composition": ["c"],
         "IronContent": ["cFe"],
         "HPE": ["hpe"],
@@ -126,6 +132,8 @@ FIELD_FILES_H5: Mapping[str, List[str]] = MappingProxyType(
         "Stress": ["sII"],
         "PrincipalStressAxis": ["sx1", "sx2", "sx3"],
         "StrainRate": ["edot"],
+        'Basalt': ['bs'],       #AG
+        'Harzburgite': ['hz'],  #AG
         "Primordial": ["prim"],
         "MeltFrac": ["meltfrac"],
         "MeltComposition": ["meltcompo"],
